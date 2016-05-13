@@ -5,6 +5,7 @@
    StyleSheet
  } from 'react-native';
 
+import Parse from 'parse/react-native';
 import Signin from './components/authentication/signin';
 
  module.exports = React.createClass({

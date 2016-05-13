@@ -6,13 +6,15 @@ import {
   TextInput
 } from 'react-native';
 
+import Parse from 'parse/react-native';
 import Button from '../common/button';
 
 module.exports = React.createClass({
   getInitialState: function() {
     return {
       username: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
   },
   render: function() {
@@ -35,6 +37,7 @@ module.exports = React.createClass({
           onChangeText={(text) => this.setState({password: text})}
           />
 
+        <Text style={styles.label}>{this.state.errorMessage}</Text>
         <Button
           text={'Sign in'}
           onPress={this.onPress}
@@ -43,7 +46,10 @@ module.exports = React.createClass({
     )
   },
   onPress: function() {
-    
+    Parse.User.logIn(this.state.username, this.state.password, {
+      success: (user) => { console.log(user); },
+      error: (data, error) => { this.setState({ errorMessage: error.message }); }
+    });
   }
 });
 
