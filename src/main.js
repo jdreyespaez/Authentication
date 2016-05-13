@@ -5,13 +5,13 @@
    StyleSheet
  } from 'react-native';
 
+import Signin from './components/authentication/signin';
+
  module.exports = React.createClass({
    render: function() {
      return (
        <View style={styles.container}>
-         <Text>
-           I am on both iOS and Android!
-         </Text>
+         <Signin />
        </View>
      )
    }
@@ -21,6 +21,6 @@
    container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center' 
+    alignItems: 'center'
    }
  });
